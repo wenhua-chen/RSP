@@ -3,8 +3,8 @@
 # Website: https://wenhua-chen.github.io/
 # Github: https://github.com/wenhua-chen
 # Date: 2023-12-03 16:25:54
-# LastEditTime: 2023-12-28 17:16:53
-# Description: 
+# LastEditTime: 2023-12-29 11:12:11
+# Description: AVL_Tree insert, delete and search
 
 class TreeNode:
     def __init__(self, val) -> None:
@@ -14,40 +14,31 @@ class TreeNode:
         self.height = 1
 
 class AVLTree:
-    def get_height(self, node):
+
+    # 前序
+    def pre_order(self, node):
         if not node:
-            return 0
-        return node.height
+            return
+        print(f'{node.val} ', end='')
+        self.pre_order(node.left)
+        self.pre_order(node.right)
     
-    def get_balance(self, node):
-        if node is None:
-            return 0
-        return self.get_height(node.left) - self.get_height(node.right)
+    # 中序
+    def in_order(self, node):
+        if not node:
+            return
+        self.in_order(node.left)
+        print(f'{node.val} ', end='')
+        self.in_order(node.right)
     
-    def height_update(self, node):
-        node.height = 1 + max(self.get_height(node.left), self.get_height(node.right))
-
-    def left_rotate(self, x):
-        y = x.right
-        leaf = y.left
-        # rotate
-        x.right = leaf
-        y.left = x
-        # height
-        self.height_update(x)
-        self.height_update(y)
-        return y
-
-    def right_rotate(self, x):
-        y = x.left
-        leaf = y.right
-        # rotate
-        x.left = leaf
-        y.right = x
-        # height
-        self.height_update(x)
-        self.height_update(y)
-        return y
+    def search(self, root, key):
+        if not root:
+            return None
+        if key < root.val:
+            return self.search(root.left, key)
+        if key > root.val:
+            return self.search(root.right, key)
+        return root
 
     def insert(self, root, key):
         # normal BST
@@ -114,21 +105,42 @@ class AVLTree:
             return node
         return self.get_min(node.left)
 
-    # 前序
-    def pre_order(self, node):
+    def get_height(self, node):
         if not node:
-            return
-        print(f'{node.val} ', end='')
-        self.pre_order(node.left)
-        self.pre_order(node.right)
+            return 0
+        return node.height
     
-    # 中序
-    def in_order(self, node):
-        if not node:
-            return
-        self.in_order(node.left)
-        print(f'{node.val} ', end='')
-        self.in_order(node.right)
+    def get_balance(self, node):
+        if node is None:
+            return 0
+        return self.get_height(node.left) - self.get_height(node.right)
+    
+    def height_update(self, node):
+        node.height = 1 + max(self.get_height(node.left), self.get_height(node.right))
+
+    def left_rotate(self, x):
+        y = x.right
+        leaf = y.left
+        # rotate
+        x.right = leaf
+        y.left = x
+        # height
+        self.height_update(x)
+        self.height_update(y)
+        return y
+
+    def right_rotate(self, x):
+        y = x.left
+        leaf = y.right
+        # rotate
+        x.left = leaf
+        y.right = x
+        # height
+        self.height_update(x)
+        self.height_update(y)
+        return y
+
+    
     
 
 myTree = AVLTree()
