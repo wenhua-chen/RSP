@@ -3,7 +3,7 @@
 # Website: https://wenhua-chen.github.io/
 # Github: https://github.com/wenhua-chen
 # Date: 2023-12-29 13:00:20
-# LastEditTime: 2023-12-30 16:25:04
+# LastEditTime: 2024-01-01 12:13:11
 # Description: 
 
 class UnionFind:
@@ -33,13 +33,15 @@ class UnionFind:
     def same_component(self, i, j):
         return self.find(i) == self.find(j)
 
-myunionfind = UnionFind(5)
-myunionfind.union(0,1)
-myunionfind.union(2,3)
-myunionfind.union(1,3)
-print(myunionfind.parents)
-print(myunionfind.size)
+if __name__ == '__main__':
 
-print(myunionfind.same_component(2,0))
+    myunionfind = UnionFind(5)
+    myunionfind.union(0,1)
+    myunionfind.union(2,3)
+    myunionfind.union(1,3)
+    print(myunionfind.parents)
+    print(myunionfind.size)
+
+    print(myunionfind.same_component(2,0))
 
 

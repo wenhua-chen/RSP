@@ -4,7 +4,7 @@
 # Github: https://github.com/wenhua-chen
 # Date: 2023-12-31 12:29:15
 # LastEditTime: 2023-12-31 18:50:29
-# Description: Prim with/without Heap
+# Description: Prim with/without Heap in MST
 
 
 # complexity: O(V^2), traverse all V distances for each Vertice
@@ -67,6 +67,7 @@ graph = [
     {1:2,5:2,3:3,2:7}
 ]
 
-parents = prim_slow(graph, 0)
-# parents = prim_fast(graph, 0)
-print_mst(graph, parents)
+if __name__ == "__main__":
+    parents = prim_slow(graph, 0)
+    # parents = prim_fast(graph, 0)
+    print_mst(graph, parents)
