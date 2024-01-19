@@ -3,11 +3,11 @@
 # Website: https://wenhua-chen.github.io/
 # Github: https://github.com/wenhua-chen
 # Date: 2024-01-17 11:39:22
-# LastEditTime: 2024-01-17 12:02:18
+# LastEditTime: 2024-01-17 12:25:56
 # Description: 
 
 class Solution:
-    def isBoomerang1(self, points):
+    def isBoomerang(self, points):
         x1, y1 = points[0]
         x2, y2 = points[1]
         x3, y3 = points[2]
@@ -22,17 +22,6 @@ class Solution:
         slopes.add(slope23)
         return len(slopes) == 3
         
-
-        
-
-        if points[0][0] == points[1][0]:
-            return points[2][0] != points[0][0]
-        
-        a = (points[1][1] - points[0][1]) / (points[1][0] - points[0][0])
-        b = points[1][1] - a*points[1][0]
-
-        return points[2][1] != a*points[2][0] + b
-
     def isBoomerang2(self, points) -> bool:
         x1, y1 = points[0][0], points[0][1]
         x2, y2 = points[1][0], points[1][1]
