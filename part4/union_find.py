@@ -3,7 +3,7 @@
 # Website: https://wenhua-chen.github.io/
 # Github: https://github.com/wenhua-chen
 # Date: 2023-12-29 13:00:20
-# LastEditTime: 2024-01-01 12:13:11
+# LastEditTime: 2024-02-05 12:29:47
 # Description: 
 
 class UnionFind:
@@ -11,6 +11,7 @@ class UnionFind:
         self.parents = list(range(n))
         self.size = [1]*n
     
+    # O(logn)
     def find(self, x):
         if self.parents[x] == x:
             return x
@@ -18,6 +19,7 @@ class UnionFind:
         self.parents[x] = result
         return result
 
+    # O(logn)
     def union(self, i, j):
         p_i = self.find(i)
         p_j = self.find(j)
@@ -35,13 +37,15 @@ class UnionFind:
 
 if __name__ == '__main__':
 
-    myunionfind = UnionFind(5)
-    myunionfind.union(0,1)
-    myunionfind.union(2,3)
-    myunionfind.union(1,3)
+    myunionfind = UnionFind(4)
+    myunionfind.union(0,3)
+    myunionfind.union(1,2)
+    myunionfind.union(0,2)
     print(myunionfind.parents)
     print(myunionfind.size)
 
+    print(myunionfind.same_component(1,0))
     print(myunionfind.same_component(2,0))
+    print(myunionfind.same_component(3,0))
 
 

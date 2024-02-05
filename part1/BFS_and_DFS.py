@@ -3,7 +3,7 @@
 # Website: https://wenhua-chen.github.io/
 # Github: https://github.com/wenhua-chen
 # Date: 2023-12-19 23:20:38
-# LastEditTime: 2023-12-29 12:53:02
+# LastEditTime: 2024-02-05 15:41:21
 # Description: 
 
 from collections import defaultdict
@@ -18,8 +18,7 @@ class Graph:
 
     def BFS(self, s):
         visited = [False] * len(self.graph)
-        queue = []
-        queue.append(s)
+        queue = [s]
         visited[s] = True
         while len(queue) > 0:
             cur = queue.pop(0)
